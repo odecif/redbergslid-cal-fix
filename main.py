@@ -1,4 +1,4 @@
-from flask import Flask,send_file,request
+from flask import Flask,send_file,request #notera request requests skillnad
 import requests,tempfile, os
 from datetime import date,datetime,timedelta
 from icalendar import Calendar, Event
@@ -8,7 +8,7 @@ app = Flask(__name__)
 def getAllCal(avdelning=0):
     api="https://redbergslid.scout.se/kalender/lista/?"
     parameters = {
-    "tribe_event_category":"scout",
+    "tribe_event_category":"scout",#distrik/national är också alternativ
     "event-section":0,
     "tribe-bar-date":'1907-08-1',
     "ical":0
@@ -64,3 +64,7 @@ def giveFile(avdelning):
     calFile = BytesIO(getAllCal(avdelning))
     calFile.seek(0)
     return send_file(calFile,attachment_filename='redbergslid.ics', as_attachment=True)
+
+#Nedan för att testa på localhost
+# if __name__ == "__main__":
+#     app.run(host="127.0.0.1", port=8080, debug=True)
