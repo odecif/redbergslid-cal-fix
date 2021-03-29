@@ -26,7 +26,7 @@ def getDepartmentsList():
     return avdelningar
 
 
-# Hämta alla högra kalendar (kår, distrikt, nationell)
+# Hämta alla högre kalendar (kår, distrikt, nationell)
 def getCategories():
     soup = getSite()
     organlista = []
@@ -95,6 +95,8 @@ def index():
         return_object.append(
                 ''.join(["<li><a href=\"", base, "cat/", category[1], "\">",
                         category[0], "</a></li>"]))
+
+    return_object.append("</nav></strong></div>")
 
     return_object.append("</headers></body>")
 
